@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Prefetch DNS -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" />
+
+    <title>x4 Protocol - Instant Gasless Payments</title>
+    <meta name="description" content="Instant, gasless HTTP 402 payments with memecoins. Zero infrastructure complexity. Accept DEGEN, PEPE, X4, and more." />
+    <meta name="theme-color" content="#F3BA2F" />
+    <meta name="keywords" content="x444, HTTP 402, payment protocol, gasless, memecoin, DEGEN, PEPE, X4" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/x4-favicon.jpg" />
+    <link rel="shortcut icon" href="/x4-favicon.jpg" />
+
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="x4 Protocol - Instant Gasless Payments" />
+    <meta property="og:description" content="Accept payments in memecoins with zero gas fees. HTTP 402 protocol for instant transactions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://x444.xyz" />
+    <meta property="og:image" content="https://x444.xyz/x4-logo.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="x4 Protocol" />
+
+    <!-- Twitter Card (Better formatting for Twitter shares) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="x4 Protocol - Instant Gasless Payments" />
+    <meta name="twitter:description" content="Accept payments in memecoins with zero gas fees. HTTP 402 protocol for instant transactions." />
+    <meta name="twitter:image" content="https://x444.xyz/x4-logo.jpg" />
+    <meta name="twitter:site" content="@x4protocol" />
+    <meta name="twitter:creator" content="@x4protocol" />
+  </head>
+  <body class="bg-slate-950">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx" async></script>
+    <!-- Web Vitals tracking (optional, comment out if not needed) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
