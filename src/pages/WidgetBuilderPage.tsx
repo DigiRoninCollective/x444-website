@@ -46,14 +46,14 @@ export default function WidgetBuilderPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-x4-gold-400 to-yellow-400 bg-clip-text text-transparent">
-            Memecoin Payment Widget Builder
+            Memecoin Payment Widget for Creators
           </h1>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-            Accept x4 token, DEGEN, PEPE, SHIB, DOGE and other memecoins on your website.
-            Configure and generate your embeddable payment widget in seconds.
+            Accept memecoin tips & payments on BNB Chain & Solana.
+            Let your fans pay you in DEGEN, PEPE, SHIB, BONK, WIF - no coding required!
           </p>
           <p className="text-sm text-slate-500 mt-2">
-            x444 = Platform • x4 = Payment Token • Built on HTTP 402 Protocol
+            BNB Chain ($0.30/tx) • Solana ($0.0001/tx) • Built for Content Creators
           </p>
         </div>
 
@@ -122,13 +122,13 @@ export default function WidgetBuilderPage() {
 
               {/* Quick Tips */}
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 Token Structure</h3>
+                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 For Content Creators</h3>
                 <ul className="text-sm text-slate-400 space-y-1">
-                  <li>• x444 = Native utility token (powers the platform)</li>
-                  <li>• x4 = Payment token (what users pay with)</li>
-                  <li>• Also accepts memecoins: DEGEN, PEPE, SHIB, DOGE, BONK</li>
-                  <li>• Real-time pricing with oracle integration</li>
-                  <li>• Gasless payments - users pay zero fees</li>
+                  <li>• BNB Chain: Low gas, huge community</li>
+                  <li>• Solana: Ultra-cheap (100x less gas!)</li>
+                  <li>• Accept: DEGEN, PEPE, SHIB, BONK, WIF, x4</li>
+                  <li>• Fans pay zero gas fees</li>
+                  <li>• Perfect for tips, donations, NFT sales</li>
                 </ul>
               </div>
             </div>

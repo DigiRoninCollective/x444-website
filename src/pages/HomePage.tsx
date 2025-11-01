@@ -6,12 +6,12 @@ import AdoptionMetrics from '../components/AdoptionMetrics';
 import Roadmap from '../components/Roadmap';
 
 const features = [
-  { icon: Zap, title: 'Accept Memecoins Instantly', desc: 'Direct payments in volatile tokens with real-time pricing' },
-  { icon: Globe, title: 'Any BEP-20 Token', desc: 'Stablecoins, memecoins, or any token your users hold' },
-  { icon: Lock, title: 'Zero Customer Gas Fees', desc: 'EIP-3009 gasless - users sign, merchants pay ~$0.20' },
-  { icon: Gauge, title: 'Oracle-Based Pricing', desc: '60-second quotes with 5% slippage protection & 1-block confirmations' },
-  { icon: Layers, title: 'Non-Custodial Settlement', desc: 'Direct token transfer - you control funds immediately' },
-  { icon: Code, title: 'Developer Friendly', desc: 'Simple REST APIs, open-source SDKs, full documentation' },
+  { icon: Zap, title: 'BNB Chain + Solana', desc: 'Multi-chain support for memecoins on the fastest, cheapest networks' },
+  { icon: Coins, title: 'Accept Any Memecoin', desc: 'DEGEN, PEPE, SHIB, BONK, WIF - pay creators in the tokens fans love' },
+  { icon: Lock, title: 'Zero Fan Gas Fees', desc: 'Gasless payments - fans sign, you relay (~$0.0001 on Solana!)' },
+  { icon: Gauge, title: 'Real-Time Pricing', desc: 'Oracle-based pricing with slippage protection for volatile assets' },
+  { icon: Layers, title: 'Instant Settlement', desc: 'Non-custodial - funds hit your wallet in <1 second' },
+  { icon: Code, title: 'Widget for Creators', desc: 'Embeddable payment widget - no coding required for content creators' },
 ];
 
 export default function HomePage() {
