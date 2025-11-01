@@ -10,7 +10,8 @@
 export class ElevenLabsTTSCache {
   constructor(options = {}) {
     // Use proxy endpoint instead of direct API call
-    this.proxyUrl = '/api/elevenlabs-proxy';
+    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+    this.proxyUrl = `${apiBaseUrl}/api/elevenlabs-proxy`;
     this.voiceId = options.voiceId || 'EXAVITQu4vr4xnSDxMaL'; // CZ voice
     this.modelId = options.modelId || 'eleven_flash_v2_5'; // Most cost-efficient
     this.maxCacheSize = options.maxCacheSize || 50; // Max cached audio clips

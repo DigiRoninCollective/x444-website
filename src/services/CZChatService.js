@@ -7,7 +7,8 @@
 export class CZChatService {
   constructor(options = {}) {
     // Use proxy endpoint instead of direct API call
-    this.groqApiUrl = '/api/groq-proxy';
+    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+    this.groqApiUrl = `${apiBaseUrl}/api/groq-proxy`;
     this.model = options.model || 'llama-3.3-70b-versatile';
     this.isConfigured = true; // Always configured since we use proxy
     this.conversationHistory = [];
