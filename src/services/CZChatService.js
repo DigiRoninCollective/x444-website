@@ -6,10 +6,10 @@
 
 export class CZChatService {
   constructor(options = {}) {
-    this.groqApiKey = this.getEnvVariable('VITE_GROQ_API_KEY');
-    this.groqApiUrl = 'https://api.groq.com/openai/v1/chat/completions';
+    // Use proxy endpoint instead of direct API call
+    this.groqApiUrl = '/api/groq-proxy';
     this.model = options.model || 'llama-3.3-70b-versatile';
-    this.isConfigured = !!this.groqApiKey;
+    this.isConfigured = true; // Always configured since we use proxy
     this.conversationHistory = [];
     this.maxHistory = options.maxHistory || 10;
     this.isLoading = false;
@@ -19,10 +19,11 @@ export class CZChatService {
   }
 
   /**
-   * Get environment variable safely for browser
+   * DEPRECATED: No longer needed with proxy
+   * Kept for backwards compatibility
    */
   getEnvVariable(name) {
-    return import.meta.env[name] || '';
+    return '';
   }
 
   /**
@@ -121,20 +122,15 @@ SCOPE BOUNDARIES:
         ...this.conversationHistory,
       ];
 
-      // Call Groq API
+      // Call Groq API via proxy (API key protected on server)
       const response = await fetch(this.groqApiUrl, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${this.groqApiKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           model: this.model,
           messages: messages,
-          temperature: 0.7,
-          max_tokens: 500,
-          top_p: 1,
-          stop: null,
         }),
       });
 

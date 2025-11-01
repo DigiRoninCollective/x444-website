@@ -9,10 +9,9 @@
 
 export class ElevenLabsTTSCache {
   constructor(options = {}) {
-    this.apiKey = this.getEnvVariable('VITE_ELEVENLABS_API_KEY');
-    // Use voice ID from options, env, or default to CZ voice
-    this.voiceId =
-      options.voiceId || this.getEnvVariable('VITE_ELEVENLABS_CZ_VOICE_ID') || '';
+    // Use proxy endpoint instead of direct API call
+    this.proxyUrl = '/api/elevenlabs-proxy';
+    this.voiceId = options.voiceId || 'EXAVITQu4vr4xnSDxMaL'; // CZ voice
     this.modelId = options.modelId || 'eleven_flash_v2_5'; // Most cost-efficient
     this.maxCacheSize = options.maxCacheSize || 50; // Max cached audio clips
     this.cache = new Map(); // In-memory cache
@@ -24,10 +23,11 @@ export class ElevenLabsTTSCache {
   }
 
   /**
-   * Get environment variable
+   * DEPRECATED: No longer needed with proxy
+   * Kept for backwards compatibility
    */
   getEnvVariable(name) {
-    return import.meta.env[name] || '';
+    return '';
   }
 
   /**
@@ -110,63 +110,44 @@ export class ElevenLabsTTSCache {
   }
 
   /**
-   * Generate TTS audio via ElevenLabs API
+   * Generate TTS audio via proxy (API key protected on server)
    */
   async generateTTS(text) {
-    if (!this.apiKey) {
-      throw new Error('ElevenLabs API key not configured');
-    }
-
-    if (!this.voiceId) {
-      throw new Error('ElevenLabs CZ Voice ID not configured');
-    }
-
     try {
-      const url = `https://api.elevenlabs.io/v1/text-to-speech/${this.voiceId}`;
-      console.log('[TTS] Calling API:', url);
+      console.log('[TTS] Calling proxy API');
 
-      const response = await fetch(url, {
+      const response = await fetch(this.proxyUrl, {
         method: 'POST',
         headers: {
-          Accept: 'audio/mpeg',
           'Content-Type': 'application/json',
-          'xi-api-key': this.apiKey,
         },
         body: JSON.stringify({
           text,
-          model_id: this.modelId,
-          voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.75,
-          },
-          speaking_rate: 0.75, // 0.75 = 75% speed (slightly slower)
+          voice_id: this.voiceId,
         }),
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        let errorMessage = `TTS API error: ${response.status} ${response.statusText}`;
-
-        try {
-          const errorData = JSON.parse(errorText);
-          if (errorData.detail?.status === 'quota_exceeded') {
-            errorMessage = `ElevenLabs Quota Exceeded: ${errorData.detail.message}`;
-          }
-        } catch (e) {
-          // Not JSON, just use the text
-        }
+        const errorData = await response.json();
+        let errorMessage = errorData.error || `TTS API error: ${response.status} ${response.statusText}`;
 
         console.error('[TTS] API Error:', {
           status: response.status,
-          statusText: response.statusText,
-          hasApiKey: !!this.apiKey,
-          hasVoiceId: !!this.voiceId,
+          error: errorData,
         });
 
         throw new Error(errorMessage);
       }
 
-      const audioBlob = await response.blob();
+      const { audio, contentType } = await response.json();
+
+      // Convert base64 audio to blob
+      const audioData = atob(audio);
+      const audioArray = new Uint8Array(audioData.length);
+      for (let i = 0; i < audioData.length; i++) {
+        audioArray[i] = audioData.charCodeAt(i);
+      }
+      const audioBlob = new Blob([audioArray], { type: contentType });
       console.log('[TTS] Audio generated successfully');
       return audioBlob;
     } catch (error) {
