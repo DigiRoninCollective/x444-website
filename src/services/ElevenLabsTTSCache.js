@@ -9,9 +9,11 @@
 
 export class ElevenLabsTTSCache {
   constructor(options = {}) {
-    // Use proxy endpoint instead of direct API call
-    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
-    this.proxyUrl = `${apiBaseUrl}/api/elevenlabs-proxy`;
+    // Use Supabase Edge Function endpoint
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    this.proxyUrl = supabaseUrl
+      ? `${supabaseUrl}/functions/v1/elevenlabs-proxy`
+      : '/api/elevenlabs-proxy'; // Fallback for local dev
     this.voiceId = options.voiceId || 'EXAVITQu4vr4xnSDxMaL'; // CZ voice
     this.modelId = options.modelId || 'eleven_flash_v2_5'; // Most cost-efficient
     this.maxCacheSize = options.maxCacheSize || 50; // Max cached audio clips

@@ -6,11 +6,13 @@
 
 export class CZChatService {
   constructor(options = {}) {
-    // Use proxy endpoint instead of direct API call
-    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
-    this.groqApiUrl = `${apiBaseUrl}/api/groq-proxy`;
+    // Use Supabase Edge Function endpoint
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    this.groqApiUrl = supabaseUrl
+      ? `${supabaseUrl}/functions/v1/groq-proxy`
+      : '/api/groq-proxy'; // Fallback for local dev
     this.model = options.model || 'llama-3.3-70b-versatile';
-    this.isConfigured = true; // Always configured since we use proxy
+    this.isConfigured = !!supabaseUrl;
     this.conversationHistory = [];
     this.maxHistory = options.maxHistory || 10;
     this.isLoading = false;
