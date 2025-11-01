@@ -22,7 +22,8 @@ const DEMO_CONFIG = {
       logo: '🐕'
     }
   ],
-  faciliorApiEndpoint: process.env.REACT_APP_FACILITATOR_API || 'http://localhost:3000',
+  // Note: In production, set VITE_FACILITATOR_API in your environment
+  faciliorApiEndpoint: import.meta.env.VITE_FACILITATOR_API || 'http://localhost:3000',
 };
 
 export default function WidgetDemoPage() {

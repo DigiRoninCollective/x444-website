@@ -472,7 +472,9 @@ interface PaymentMethod {
 
 const server = new X444Server({
   rpcUrl: 'https://mainnet.base.org',
-  privateKey: process.env.FACILITATOR_KEY,
+  // IMPORTANT: This is SERVER-SIDE code only!
+  // Never expose private keys in client-side code
+  privateKey: process.env.FACILITATOR_KEY, // Server environment variable
   tokenRegistry: [/* supported tokens */]
 });
 

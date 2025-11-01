@@ -15,7 +15,7 @@ export const GOVERNANCE_CONFIG: GovernanceConfig = {
   enabled: false,
 
   // API endpoint for governance decisions
-  apiUrl: process.env.VITE_GOVERNANCE_API_URL || 'https://governance.x444.io/api',
+  apiUrl: import.meta.env.VITE_GOVERNANCE_API_URL || 'https://governance.x444.io/api',
 
   // Individual feature flags
   agentDecisions: false, // AI agents make proposals

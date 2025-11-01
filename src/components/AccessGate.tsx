@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
+/**
+ * AccessGate Component
+ *
+ * ⚠️ SECURITY WARNING: This is NOT real security! ⚠️
+ *
+ * This is a simple client-side gate to prevent casual users from
+ * accessing pre-launch content. The password is visible in the source code
+ * and can be easily bypassed.
+ *
+ * Purpose: Brand protection only - prevents people from screenshotting
+ * unreleased content and claiming they're launching the token.
+ *
+ * For real authentication, use server-side auth (OAuth, JWT, etc.)
+ *
+ * Password is intentionally hardcoded: 'x4protocol'
+ */
 export default function AccessGate({ children }: { children: React.ReactNode }) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [password, setPassword] = useState('');
@@ -14,7 +30,8 @@ export default function AccessGate({ children }: { children: React.ReactNode }) 
 
   const handleUnlock = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple password check (you can change this)
+    // Hardcoded password - this is intentional for brand protection only
+    // NOT real security! See component docs above.
     if (password === 'x4protocol') {
       setIsUnlocked(true);
       sessionStorage.setItem('x4-access-granted', 'true');

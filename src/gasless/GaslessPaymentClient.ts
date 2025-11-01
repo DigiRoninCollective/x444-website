@@ -44,6 +44,27 @@ export async function createGaslessPaymentAuthorization(
   signer: ethers.Signer,
   params: GaslessPaymentParams
 ): Promise<SignedAuthorization> {
+  // Input validation
+  const amountNum = parseFloat(params.amount.toString());
+  if (isNaN(amountNum) || amountNum <= 0) {
+    throw new Error('Invalid amount: must be a positive number');
+  }
+  if (amountNum > 1e18) {
+    throw new Error('Amount exceeds maximum allowed (1e18)');
+  }
+  if (!ethers.isAddress(params.paymentToken)) {
+    throw new Error('Invalid payment token address');
+  }
+  if (!ethers.isAddress(params.payer)) {
+    throw new Error('Invalid payer address');
+  }
+  if (!ethers.isAddress(params.contractAddress)) {
+    throw new Error('Invalid contract address');
+  }
+  if (params.deadline < Math.floor(Date.now() / 1000)) {
+    throw new Error('Deadline must be in the future');
+  }
+
   // Construct the exact message that was signed
   const authHash = ethers.solidityKeccak256(
     ['string', 'address', 'uint256', 'address', 'uint256', 'address', 'uint256'],
