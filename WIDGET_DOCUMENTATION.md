@@ -4,15 +4,21 @@
 
 **x444** is a payment layer specifically built for **memecoins and volatile assets**.
 
+### Token Structure
+- **x444** = Native utility token (powers the platform)
+- **x4** = Payment token (what users pay with)
+- **Plus memecoins**: DEGEN, PEPE, SHIB, DOGE, BONK, and more
+
 Unlike traditional payment processors or even Coinbase's X402, x444 specializes in:
 - **Accepting memecoins**: DEGEN, PEPE, SHIB, DOGE, BONK, and more
+- **Native payment token**: x4 for instant payments
 - **Real-time pricing**: Dynamic oracle-based pricing for volatile assets
 - **Instant settlement**: Payments settle in <1 second
 - **Gasless for users**: Zero transaction fees for your customers
 - **Non-custodial**: Direct wallet-to-wallet transfers
 
 **Perfect for:**
-- NFT drops paid in memecoins
+- NFT drops paid in memecoins or x4
 - Memecoin merchandise stores
 - Community creator monetization
 - Degen-to-degen transactions
@@ -213,7 +219,7 @@ onError: (error) => {
 2. Click "Create Payment Link"
 3. Configure your payment settings:
    - Link name (e.g., "Store Checkout")
-   - Supported tokens (DEGEN, PEPE, X4, etc.)
+   - Supported tokens (x4, DEGEN, PEPE, SHIB, DOGE, etc.)
    - Optional: Custom fee recipient
 4. Copy your `linkId` - it looks like: `store_checkout_abc123`
 5. Use it in the widget initialization

@@ -49,11 +49,11 @@ export default function WidgetBuilderPage() {
             Memecoin Payment Widget Builder
           </h1>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-            Accept DEGEN, PEPE, SHIB, DOGE and other memecoins on your website.
+            Accept x4 token, DEGEN, PEPE, SHIB, DOGE and other memecoins on your website.
             Configure and generate your embeddable payment widget in seconds.
           </p>
           <p className="text-sm text-slate-500 mt-2">
-            x444 = Memecoin Payment Layer • Built on HTTP 402 Protocol
+            x444 = Platform • x4 = Payment Token • Built on HTTP 402 Protocol
           </p>
         </div>
 
@@ -122,11 +122,12 @@ export default function WidgetBuilderPage() {
 
               {/* Quick Tips */}
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 x444 = Memecoin Payments</h3>
+                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 Token Structure</h3>
                 <ul className="text-sm text-slate-400 space-y-1">
-                  <li>• Specifically built for memecoins and volatile assets</li>
+                  <li>• x444 = Native utility token (powers the platform)</li>
+                  <li>• x4 = Payment token (what users pay with)</li>
+                  <li>• Also accepts memecoins: DEGEN, PEPE, SHIB, DOGE, BONK</li>
                   <li>• Real-time pricing with oracle integration</li>
-                  <li>• Supports DEGEN, PEPE, SHIB, BONK, DOGE, and more</li>
                   <li>• Gasless payments - users pay zero fees</li>
                 </ul>
               </div>
@@ -249,7 +250,7 @@ export default function WidgetBuilderPage() {
               },
               {
                 title: '🪙 Multi-Token',
-                desc: 'Accept payments in DEGEN, PEPE, X4, SHIB, DOGE, USDC, and more memecoins.',
+                desc: 'Accept payments in x4 (native token), DEGEN, PEPE, SHIB, DOGE, BONK, and more memecoins.',
               },
               {
                 title: '🔒 Secure',
