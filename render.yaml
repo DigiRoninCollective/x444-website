@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: x444-website
+    env: static
+    buildCommand: pnpm install && pnpm build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PNPM_VERSION
+        value: 8
