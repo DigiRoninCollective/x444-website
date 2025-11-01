@@ -54,3 +54,4 @@ credentials.json
 *-credentials.json
 .vercel
 .env*.local
+widget-config.js
