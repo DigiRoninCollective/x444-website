@@ -19,6 +19,7 @@ const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage'));
 const DocsPage = lazy(() => import('./pages/DocsPage'));
 const WidgetDemoPage = lazy(() => import('./pages/WidgetDemoPage'));
 const WidgetShowcasePage = lazy(() => import('./pages/WidgetShowcasePage'));
+const WidgetBuilderPage = lazy(() => import('./pages/WidgetBuilderPage'));
 const TechnicalPage = lazy(() => import('./pages/TechnicalPage'));
 const CreatorDashboard = lazy(() => import('./pages/CreatorDashboard'));
 

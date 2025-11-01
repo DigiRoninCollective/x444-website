@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X444 Payment Widget - Example</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #0a0a0a;
+      color: #ffffff;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .examples {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .example {
+      background: #1a1a1a;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #333;
+    }
+    .example h2 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #f39c12;
+    }
+    .example p {
+      opacity: 0.7;
+      font-size: 14px;
+    }
+    code {
+      background: #2a2a2a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #f39c12;
+    }
+  </style>
+</head>
+<body>
+  <h1>🪙 X444 Payment Widget Examples</h1>
+
+  <div class="examples">
+    <!-- Example 1: Basic Widget -->
+    <div class="example">
+      <h2>Basic Widget</h2>
+      <p>Simple payment widget with default theme</p>
+      <div id="x444-basic"></div>
+    </div>
+
+    <!-- Example 2: Custom Theme -->
+    <div class="example">
+      <h2>Light Theme</h2>
+      <p>Payment widget with light theme</p>
+      <div id="x444-light"></div>
+    </div>
+
+    <!-- Example 3: With Callbacks -->
+    <div class="example">
+      <h2>With Event Handlers</h2>
+      <p>Widget with <code>onSuccess</code> and <code>onError</code> callbacks</p>
+      <div id="x444-events"></div>
+      <div id="event-log" style="margin-top: 16px; padding: 12px; background: #2a2a2a; border-radius: 8px; font-size: 12px; max-height: 200px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- Include X444 Widget Script -->
+  <script src="/widget.js"></script>
+
+  <!-- Initialize Widgets -->
+  <script>
+    // Example 1: Basic widget
+    X444.init({
+      elementId: 'x444-basic',
+      linkId: 'demo_payment_1',
+      theme: 'dark'
+    });
+
+    // Example 2: Light theme
+    X444.init({
+      elementId: 'x444-light',
+      linkId: 'demo_payment_2',
+      theme: 'light'
+    });
+
+    // Example 3: With event handlers
+    const eventLog = document.getElementById('event-log');
+    function logEvent(message) {
+      const time = new Date().toLocaleTimeString();
+      eventLog.innerHTML = `[${time}] ${message}<br>` + eventLog.innerHTML;
+    }
+
+    X444.init({
+      elementId: 'x444-events',
+      linkId: 'demo_payment_3',
+      theme: 'dark',
+      onSuccess: (txHash, amount, token) => {
+        logEvent(`✅ Payment successful! Amount: $${amount}, Token: ${token}, TX: ${txHash.substring(0, 10)}...`);
+        alert('Payment successful! Check the event log above.');
+      },
+      onError: (error) => {
+        logEvent(`❌ Payment failed: ${error.message}`);
+      }
+    });
+
+    logEvent('Widget initialized and ready');
+  </script>
+</body>
+</html>
