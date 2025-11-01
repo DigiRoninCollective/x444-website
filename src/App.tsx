@@ -53,6 +53,7 @@ export default function App() {
                         <Route path="/docs" element={<DocsPage />} />
                         <Route path="/widget" element={<WidgetDemoPage />} />
                         <Route path="/widget-showcase" element={<WidgetShowcasePage />} />
+                        <Route path="/widget-builder" element={<WidgetBuilderPage />} />
                         <Route path="/dashboard" element={<CreatorDashboard />} />
                       </Routes>
                     </Suspense>
