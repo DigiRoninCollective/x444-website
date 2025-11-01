@@ -46,10 +46,14 @@ export default function WidgetBuilderPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-x4-gold-400 to-yellow-400 bg-clip-text text-transparent">
-            Widget Builder
+            Memecoin Payment Widget Builder
           </h1>
-          <p className="text-xl text-slate-400">
-            Configure and generate your embeddable payment widget
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+            Accept DEGEN, PEPE, SHIB, DOGE and other memecoins on your website.
+            Configure and generate your embeddable payment widget in seconds.
+          </p>
+          <p className="text-sm text-slate-500 mt-2">
+            x444 = Memecoin Payment Layer • Built on HTTP 402 Protocol
           </p>
         </div>
 
@@ -118,11 +122,11 @@ export default function WidgetBuilderPage() {
 
               {/* Quick Tips */}
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 Quick Tips</h3>
+                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 x444 = Memecoin Payments</h3>
                 <ul className="text-sm text-slate-400 space-y-1">
-                  <li>• Widget is responsive and mobile-friendly</li>
-                  <li>• Supports MetaMask and WalletConnect</li>
-                  <li>• Accepts multiple tokens (DEGEN, PEPE, X4, etc.)</li>
+                  <li>• Specifically built for memecoins and volatile assets</li>
+                  <li>• Real-time pricing with oracle integration</li>
+                  <li>• Supports DEGEN, PEPE, SHIB, BONK, DOGE, and more</li>
                   <li>• Gasless payments - users pay zero fees</li>
                 </ul>
               </div>
@@ -245,7 +249,7 @@ export default function WidgetBuilderPage() {
               },
               {
                 title: '🪙 Multi-Token',
-                desc: 'Accept payments in DEGEN, PEPE, X4, USDC, and more.',
+                desc: 'Accept payments in DEGEN, PEPE, X4, SHIB, DOGE, USDC, and more memecoins.',
               },
               {
                 title: '🔒 Secure',

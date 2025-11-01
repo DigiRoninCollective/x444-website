@@ -1,8 +1,28 @@
-# X444 Payment Widget - Client Documentation
+# x444 Memecoin Payment Widget - Client Documentation
+
+## 🪙 What is x444?
+
+**x444** is a payment layer specifically built for **memecoins and volatile assets**.
+
+Unlike traditional payment processors or even Coinbase's X402, x444 specializes in:
+- **Accepting memecoins**: DEGEN, PEPE, SHIB, DOGE, BONK, and more
+- **Real-time pricing**: Dynamic oracle-based pricing for volatile assets
+- **Instant settlement**: Payments settle in <1 second
+- **Gasless for users**: Zero transaction fees for your customers
+- **Non-custodial**: Direct wallet-to-wallet transfers
+
+**Perfect for:**
+- NFT drops paid in memecoins
+- Memecoin merchandise stores
+- Community creator monetization
+- Degen-to-degen transactions
+- Any business accepting volatile crypto assets
+
+---
 
 ## 🚀 Quick Start
 
-The X444 payment widget allows you to accept cryptocurrency payments on any website with just a few lines of code.
+The x444 payment widget allows you to accept memecoin payments on any website with just a few lines of code.
 
 ### 1. Include the Script
 
@@ -50,31 +70,30 @@ Add this script after the widget loads:
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Store - Checkout</title>
+  <title>My Memecoin Store - Checkout</title>
   <script src="https://cdn.x444.xyz/widget.js"></script>
 </head>
 <body>
-  <h1>Complete Your Purchase</h1>
+  <h1>Pay with Your Favorite Memecoin</h1>
 
   <div id="x444-payment"></div>
 
   <script>
     X444.init({
       elementId: 'x444-payment',
-      linkId: 'store_checkout_001',
-      theme: 'dark', // 'dark', 'light', or 'minimal'
+      linkId: 'memecoin_store_001',
+      theme: 'dark',
       onSuccess: (txHash, amount, token) => {
-        // Payment successful!
-        alert('Payment received! Transaction: ' + txHash);
+        // Memecoin payment received!
+        alert('Payment received in ' + token + '! TX: ' + txHash);
 
-        // You can now:
-        // - Deliver digital goods
-        // - Update order status
-        // - Redirect to thank you page
-        window.location.href = '/thank-you?tx=' + txHash;
+        // Deliver NFT, digital goods, etc.
+        deliverDigitalGoods(txHash);
+
+        // Redirect to success page
+        window.location.href = '/success?tx=' + txHash;
       },
       onError: (error) => {
-        // Payment failed
         alert('Payment failed: ' + error.message);
       }
     });
@@ -203,75 +222,46 @@ onError: (error) => {
 
 ## 🎯 Use Cases
 
-### E-commerce Store
+### NFT Drops (Paid in Memecoins)
 
 ```html
-<div id="checkout-widget"></div>
+<div id="nft-mint-widget"></div>
 <script>
   X444.init({
-    elementId: 'checkout-widget',
-    linkId: 'store_checkout',
-    onSuccess: (txHash) => {
-      // Mark order as paid
-      updateOrderStatus(orderId, 'paid', txHash);
-      // Send confirmation email
-      sendOrderConfirmation(orderId);
-      // Redirect to thank you page
-      window.location.href = '/order-confirmed';
+    elementId: 'nft-mint-widget',
+    linkId: 'nft_drop_degen',
+    onSuccess: (txHash, amount, token) => {
+      // User paid in DEGEN, PEPE, or other memecoin
+      console.log(`Payment received: ${amount} USD worth of ${token}`);
+
+      // Mint NFT to their wallet
+      mintNFT(userWallet, txHash);
+
+      // Show success
+      showSuccessMessage('NFT minted! Paid with ' + token);
     }
   });
 </script>
 ```
 
-### Digital Downloads
+### Memecoin Merchandise Store
 
 ```html
-<div id="download-widget"></div>
+<div id="merch-checkout"></div>
 <script>
   X444.init({
-    elementId: 'download-widget',
-    linkId: 'digital_download',
-    onSuccess: (txHash) => {
-      // Generate download link
-      const downloadUrl = generateSecureDownloadLink(txHash);
-      // Show download button
-      showDownloadButton(downloadUrl);
-    }
-  });
-</script>
-```
+    elementId: 'merch-checkout',
+    linkId: 'pepe_merch_store',
+    onSuccess: (txHash, amount, token) => {
+      // Customer paid with their favorite memecoin
+      processOrder(orderId, {
+        txHash,
+        amountUSD: amount,
+        tokenUsed: token, // Could be DOGE, SHIB, PEPE, etc.
+      });
 
-### Subscription/Access
-
-```html
-<div id="subscription-widget"></div>
-<script>
-  X444.init({
-    elementId: 'subscription-widget',
-    linkId: 'premium_subscription',
-    onSuccess: (txHash) => {
-      // Grant premium access
-      grantPremiumAccess(userId, txHash);
-      // Refresh page to show premium content
-      window.location.reload();
-    }
-  });
-</script>
-```
-
-### Donations
-
-```html
-<div id="donate-widget"></div>
-<script>
-  X444.init({
-    elementId: 'donate-widget',
-    linkId: 'donation_link',
-    onSuccess: (txHash, amount) => {
-      // Show thank you message
-      showThankYouMessage(`Thank you for your $${amount} donation!`);
-      // Add to donor wall
-      addToDonorWall(txHash, amount);
+      // Send order confirmation
+      sendConfirmation(email, token, amount);
     }
   });
 </script>

@@ -1,7 +1,18 @@
 /**
- * X444 Payment Widget - Standalone Embed Script
+ * x444 Memecoin Payment Widget - Standalone Embed Script
  *
- * Allows any website to accept x444 payments with a simple script tag
+ * Accept payments in memecoins and volatile assets with instant settlement
+ * Built on HTTP 402 protocol, powered by x444's memecoin payment layer
+ *
+ * What is x444?
+ * - Accept DEGEN, PEPE, SHIB, DOGE, and other memecoins
+ * - Real-time volatile asset pricing with oracle integration
+ * - Gasless payments (zero fees for users)
+ * - Instant settlement (<1 second)
+ * - Non-custodial (direct wallet-to-wallet)
+ *
+ * Note: x444 ≠ X402 (Coinbase's protocol)
+ * x444 is specifically designed for memecoins and volatile assets!
  *
  * Usage:
  * <script src="https://cdn.x444.xyz/widget.js"></script>
@@ -10,7 +21,7 @@
  *   X444.init({
  *     elementId: 'x444-payment',
  *     linkId: 'your_payment_link_id',
- *     onSuccess: (txHash) => console.log('Payment successful!', txHash),
+ *     onSuccess: (txHash) => console.log('Memecoin payment received!', txHash),
  *     onError: (error) => console.error('Payment failed:', error)
  *   });
  * </script>
