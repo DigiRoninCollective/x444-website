@@ -103,7 +103,7 @@ export default function HomePage() {
           </p>
 
           <p className="text-lg text-x4-silver-400 max-w-3xl mx-auto mb-12 drop-shadow-md">
-            The HTTP 402 Payment Protocol reimagined for volatile assets. Accept any BEP-20 token with instant, gasless payments on BSC.
+            Memecoin payments for content creators on BNB Chain & Solana. Let your fans pay you in DEGEN, PEPE, SHIB, BONK - with zero gas fees.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

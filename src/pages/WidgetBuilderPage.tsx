@@ -122,13 +122,13 @@ export default function WidgetBuilderPage() {
 
               {/* Quick Tips */}
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                <h3 className="font-semibold text-x4-gold-400 mb-2">💡 For Content Creators</h3>
+                <h3 className="font-semibold text-x4-gold-400 mb-2">For Content Creators</h3>
                 <ul className="text-sm text-slate-400 space-y-1">
-                  <li>• BNB Chain: Low gas, huge community</li>
-                  <li>• Solana: Ultra-cheap (100x less gas!)</li>
-                  <li>• Accept: DEGEN, PEPE, SHIB, BONK, WIF, x4</li>
-                  <li>• Fans pay zero gas fees</li>
-                  <li>• Perfect for tips, donations, NFT sales</li>
+                  <li>- BNB Chain: Low gas, huge community</li>
+                  <li>- Solana: Ultra-cheap (100x less gas)</li>
+                  <li>- Accept: DEGEN, PEPE, SHIB, BONK, WIF, x4</li>
+                  <li>- Fans pay zero gas fees</li>
+                  <li>- Perfect for tips, donations, NFT sales</li>
                 </ul>
               </div>
             </div>
