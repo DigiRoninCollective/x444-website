@@ -69,12 +69,24 @@ export default function ProtocolPage() {
             {/* Networks */}
             <div className="border border-x4-gold-500/30 rounded-lg p-8 bg-slate-900/50">
               <h3 className="text-xl font-bold text-x4-gold-400 mb-4">Supported Networks</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {['Ethereum', 'Polygon', 'Optimism', 'Arbitrum', 'BNB Chain', 'Base'].map((net, i) => (
-                  <div key={i} className="px-4 py-2 bg-slate-900/50 border border-x4-gold-500/20 hover:border-x4-gold-500/50 rounded-lg text-x4-silver-400 text-sm transition-colors">
-                    {net}
-                  </div>
-                ))}
+              <div className="space-y-4">
+                <div className="text-xs font-semibold text-x4-gold-400 tracking-wide mb-2">PRIMARY NETWORKS</div>
+                <div className="grid grid-cols-2 gap-3">
+                  {['BNB Chain', 'Solana'].map((net, i) => (
+                    <div key={i} className="px-4 py-3 bg-gradient-to-r from-x4-gold-500/20 to-x4-gold-500/10 border border-x4-gold-500/60 rounded-lg text-x4-silver-300 text-sm font-semibold transition-colors">
+                      {net}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-xs font-semibold text-slate-500 tracking-wide mt-6 mb-2">ADDITIONAL NETWORKS</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {['Base', 'Polygon', 'Arbitrum', 'Ethereum'].map((net, i) => (
+                    <div key={i} className="px-4 py-2 bg-slate-900/50 border border-x4-gold-500/20 hover:border-x4-gold-500/40 rounded-lg text-x4-silver-400 text-xs transition-colors">
+                      {net}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
