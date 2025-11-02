@@ -12,6 +12,7 @@ export default function Navigation() {
     { label: 'Dashboard', href: '/dashboard' },
     { label: 'Analytics', href: '/analytics' },
     { label: 'Docs', href: '/docs' },
+    { label: 'CZDOS', href: '/czdos' },
     { label: 'GitHub', href: 'https://github.com/zcdos/x4', target: '_blank' },
   ];
 
