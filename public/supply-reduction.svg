@@ -1,0 +1,169 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @keyframes draw-path {
+        0% { stroke-dashoffset: 3000; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes pulse-point {
+        0%, 100% { r: 6px; filter: drop-shadow(0 0 4px rgba(243, 186, 47, 0.6)); }
+        50% { r: 9px; filter: drop-shadow(0 0 12px rgba(243, 186, 47, 1)); }
+      }
+      @keyframes float-label {
+        0% { opacity: 0; transform: translateY(10px); }
+        50% { opacity: 1; }
+        100% { opacity: 0; transform: translateY(-10px); }
+      }
+      .supply-curve { animation: draw-path 3s ease-out forwards; }
+      .data-point { animation: pulse-point 2s ease-in-out infinite; }
+      .label-float { animation: float-label 3s ease-in-out infinite; }
+    </style>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7dd7d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F3BA2F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="fillGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3BA2F;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#F3BA2F;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#0a0a0a"/>
+
+  <!-- Grid -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="700" fill="url(#grid)" />
+
+  <!-- Title -->
+  <text x="600" y="45" font-size="36" font-weight="bold" fill="#F3BA2F" text-anchor="middle" filter="url(#glow)">
+    X4 Supply Reduction Over 5 Years
+  </text>
+  <text x="600" y="75" font-size="14" fill="#f7dd7d" text-anchor="middle" opacity="0.8">
+    Deflationary Economics: 1B → 50M tokens (95% reduction)
+  </text>
+
+  <!-- Y-Axis Label -->
+  <text x="40" y="120" font-size="12" fill="#f7dd7d" font-weight="bold">Supply (Millions)</text>
+
+  <!-- X-Axis Label -->
+  <text x="1100" y="630" font-size="12" fill="#f7dd7d" font-weight="bold">Years</text>
+
+  <!-- Y-Axis -->
+  <line x1="100" y1="100" x2="100" y2="600" stroke="#444" stroke-width="2"/>
+
+  <!-- X-Axis -->
+  <line x1="100" y1="600" x2="1100" y2="600" stroke="#444" stroke-width="2"/>
+
+  <!-- Y-Axis Grid Lines & Labels -->
+  <g id="y-axis">
+    <!-- 1000M -->
+    <line x1="95" y1="100" x2="1100" y2="100" stroke="#222" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="85" y="110" font-size="11" fill="#888" text-anchor="end">1000M</text>
+    <circle cx="100" cy="100" r="3" fill="#f7dd7d" opacity="0.5"/>
+
+    <!-- 750M -->
+    <line x1="95" y1="225" x2="1100" y2="225" stroke="#222" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="85" y="235" font-size="11" fill="#888" text-anchor="end">750M</text>
+
+    <!-- 500M -->
+    <line x1="95" y1="350" x2="1100" y2="350" stroke="#222" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="85" y="360" font-size="11" fill="#888" text-anchor="end">500M</text>
+
+    <!-- 250M -->
+    <line x1="95" y1="475" x2="1100" y2="475" stroke="#222" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="85" y="485" font-size="11" fill="#888" text-anchor="end">250M</text>
+
+    <!-- 50M (Final) -->
+    <line x1="95" y1="580" x2="1100" y2="580" stroke="#F3BA2F" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+    <text x="85" y="590" font-size="11" fill="#F3BA2F" text-anchor="end" font-weight="bold">50M</text>
+  </g>
+
+  <!-- X-Axis Time Labels -->
+  <g id="x-axis-labels">
+    <text x="100" y="625" font-size="11" fill="#888" text-anchor="middle">Year 0</text>
+    <text x="300" y="625" font-size="11" fill="#888" text-anchor="middle">Year 1</text>
+    <text x="500" y="625" font-size="11" fill="#888" text-anchor="middle">Year 2</text>
+    <text x="700" y="625" font-size="11" fill="#888" text-anchor="middle">Year 3</text>
+    <text x="900" y="625" font-size="11" fill="#888" text-anchor="middle">Year 4</text>
+    <text x="1100" y="625" font-size="11" fill="#888" text-anchor="middle">Year 5</text>
+  </g>
+
+  <!-- Supply Curve Path (Dark outline) -->
+  <path d="M 100,100 Q 300,130 500,200 T 900,500 L 1100,580"
+        fill="none" stroke="#111" stroke-width="4" opacity="0.5"/>
+
+  <!-- Supply Curve (Golden) -->
+  <path d="M 100,100 Q 300,130 500,200 T 900,500 L 1100,580"
+        fill="none" stroke="url(#goldGradient)" stroke-width="3"
+        stroke-dasharray="3000" stroke-linecap="round" class="supply-curve" filter="url(#glow)"/>
+
+  <!-- Fill under curve -->
+  <path d="M 100,100 Q 300,130 500,200 T 900,500 L 1100,580 L 1100,600 L 100,600 Z"
+        fill="url(#fillGradient)" opacity="0.7"/>
+
+  <!-- Data Points (Years) -->
+  <g id="data-points">
+    <!-- Year 0: 1000M -->
+    <circle cx="100" cy="100" r="6" fill="#F3BA2F" class="data-point"/>
+    <circle cx="100" cy="100" r="6" fill="none" stroke="#f7dd7d" stroke-width="1.5"/>
+    <text x="100" y="60" font-size="12" fill="#F3BA2F" text-anchor="middle" font-weight="bold">1B</text>
+    <text x="100" y="78" font-size="10" fill="#999" text-anchor="middle">Launch</text>
+
+    <!-- Year 1: ~922M -->
+    <circle cx="300" cy="130" r="6" fill="#F3BA2F" class="data-point" style="animation-delay: 0.3s;"/>
+    <circle cx="300" cy="130" r="6" fill="none" stroke="#f7dd7d" stroke-width="1.5"/>
+    <text x="300" y="75" font-size="12" fill="#f7dd7d" text-anchor="middle" font-weight="bold">922M</text>
+    <text x="300" y="93" font-size="10" fill="#999" text-anchor="middle">-78M (7.8%)</text>
+
+    <!-- Year 2: ~763M -->
+    <circle cx="500" cy="200" r="6" fill="#F3BA2F" class="data-point" style="animation-delay: 0.6s;"/>
+    <circle cx="500" cy="200" r="6" fill="none" stroke="#f7dd7d" stroke-width="1.5"/>
+    <text x="500" y="130" font-size="12" fill="#f7dd7d" text-anchor="middle" font-weight="bold">763M</text>
+    <text x="500" y="148" font-size="10" fill="#999" text-anchor="middle">-159M (15.9%)</text>
+
+    <!-- Year 3: ~515M -->
+    <circle cx="700" cy="348" r="6" fill="#F3BA2F" class="data-point" style="animation-delay: 0.9s;"/>
+    <circle cx="700" cy="348" r="6" fill="none" stroke="#f7dd7d" stroke-width="1.5"/>
+    <text x="700" y="300" font-size="12" fill="#f7dd7d" text-anchor="middle" font-weight="bold">515M</text>
+    <text x="700" y="318" font-size="10" fill="#999" text-anchor="middle">-248M (24.8%)</text>
+
+    <!-- Year 4: ~190M -->
+    <circle cx="900" cy="500" r="6" fill="#F3BA2F" class="data-point" style="animation-delay: 1.2s;"/>
+    <circle cx="900" cy="500" r="6" fill="none" stroke="#f7dd7d" stroke-width="1.5"/>
+    <text x="900" y="450" font-size="12" fill="#f7dd7d" text-anchor="middle" font-weight="bold">190M</text>
+    <text x="900" y="468" font-size="10" fill="#999" text-anchor="middle">-325M (32.5%)</text>
+
+    <!-- Year 5: 50M (Final Target) -->
+    <circle cx="1100" cy="580" r="7" fill="#F3BA2F" class="data-point" style="animation-delay: 1.5s;"/>
+    <circle cx="1100" cy="580" r="7" fill="none" stroke="#F3BA2F" stroke-width="2"/>
+    <text x="1100" y="530" font-size="13" fill="#F3BA2F" text-anchor="middle" font-weight="bold">50M</text>
+    <text x="1100" y="550" font-size="10" fill="#F3BA2F" text-anchor="middle" font-weight="bold">95% ↓</text>
+  </g>
+
+  <!-- Key Insights Box -->
+  <g id="insights">
+    <rect x="50" y="660" width="1100" height="35" fill="#F3BA2F" opacity="0.1" stroke="#F3BA2F" stroke-width="1.5" rx="5"/>
+    <text x="100" y="682" font-size="12" fill="#f7dd7d" font-weight="bold">Key Insight:</text>
+    <text x="330" y="682" font-size="12" fill="#999">Each token becomes 20x more scarce over 5 years.</text>
+    <text x="750" y="682" font-size="12" fill="#999">Value increases with adoption + scarcity.</text>
+  </g>
+
+  <!-- Annotation arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#F3BA2F" opacity="0.6" />
+    </marker>
+  </defs>
+</svg>
