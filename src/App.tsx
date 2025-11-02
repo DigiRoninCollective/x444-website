@@ -21,6 +21,7 @@ const WidgetDemoPage = lazy(() => import('./pages/WidgetDemoPage'));
 const WidgetShowcasePage = lazy(() => import('./pages/WidgetShowcasePage'));
 const TechnicalPage = lazy(() => import('./pages/TechnicalPage'));
 const CreatorDashboard = lazy(() => import('./pages/CreatorDashboard'));
+const CzdosPage = lazy(() => import('./pages/CzdosPage'));
 
 // Loading fallback
 const LoadingFallback = () => (
@@ -53,6 +54,7 @@ export default function App() {
                         <Route path="/widget" element={<WidgetDemoPage />} />
                         <Route path="/widget-showcase" element={<WidgetShowcasePage />} />
                         <Route path="/dashboard" element={<CreatorDashboard />} />
+                        <Route path="/czdos" element={<CzdosPage />} />
                       </Routes>
                     </Suspense>
                   </main>
