@@ -45,7 +45,9 @@ export async function createGaslessPaymentAuthorization(
   params: GaslessPaymentParams
 ): Promise<SignedAuthorization> {
   // Construct the exact message that was signed
-  const authHash = ethers.solidityKeccak256(
+  // Use AbiCoder to encode parameters like solidityKeccak256
+  const abiCoder = ethers.AbiCoder.defaultAbiCoder();
+  const encoded = abiCoder.encode(
     ['string', 'address', 'uint256', 'address', 'uint256', 'address', 'uint256'],
     [
       params.linkId,
@@ -57,6 +59,7 @@ export async function createGaslessPaymentAuthorization(
       params.chainId
     ]
   );
+  const authHash = ethers.keccak256(encoded);
 
   // Convert to message (what ethers.js uses)
   const messageHashArray = ethers.getBytes(authHash);

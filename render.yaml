@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: x444-website
+    env: node
+    buildCommand: cd ../.. && pnpm install --frozen-lockfile && pnpm run build --filter=x444-website
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+    headers:
+      - path: "/assets/*"
+        name: Cache-Control
+        value: public, max-age=604800, immutable
+      - path: "/index.html"
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: "/*"
+        name: X-Content-Type-Options
+        value: nosniff
+    routes:
+      - path: "/*"
+        destination: "/index.html"
+        type: rewrite
